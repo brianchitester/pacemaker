@@ -10,6 +10,11 @@ import TimeInput from './TimeInput/TimeInput';
 import TimeTable from './TimeTable/TimeTable';
 
 class AppComponent extends React.Component {
+  inputChange(distance, time) {
+    console.log('distance=', distance);
+    console.log('time=', time);
+  }
+
   render() {
     return (
       <div className='index'>
@@ -21,7 +26,7 @@ class AppComponent extends React.Component {
         <FontIcon className='material-icons' style={{fontSize:'300px'}}>&#xE566;</FontIcon>
         <FontIcon className='material-icons' style={{fontSize:'300px'}}>&#xE566;</FontIcon>
         <h1>Run faster.</h1>
-        <TimeInput/>
+        <TimeInput inputChangeCallback={this.inputChange.bind(this)} />
         <TimeTable/>
       </div>
     );

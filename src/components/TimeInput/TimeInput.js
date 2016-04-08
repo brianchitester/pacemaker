@@ -4,21 +4,49 @@ import React from 'react';
 import DropDownMenu from 'material-ui/lib/DropDownMenu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import TextField from 'material-ui/lib/text-field';
+var distanceMap = {
+  1: 1,
+  2: 3.1,
+  3: 6.2,
+  4: 13.1,
+  5: 26.2
+}
 
 export default class TimeInput extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: 2};
+    this.state = {
+      value: 2,
+      distance: 1,
+      time: '0',
+      inputChangeCallback: props.inputChangeCallback
+    };
   }
 
-  handleChange(event, index, value) {
-    this.setState({value});
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      open: nextProps.value,
+      inputChangeCallback: nextProps.inputChangeCallback
+    });
+  }
+
+  handleDistanceChange(event, index, value) {
+    this.setState({
+      value: value,
+      distance: distanceMap[value]
+    });
+    this.state.inputChangeCallback(this.state.value, this.state.distance);
+  }
+
+  handleTimeChange(e){
+    this.setState({time: e.target.value});
+    this.state.inputChangeCallback(this.state.value, this.state.distance);
   }
 
   render() {
     return (
       <div className='TimeInput'>
-        <DropDownMenu style={{fontSize:'50px', height:'50px'}} className='distance-selector' value={this.state.value} onChange={this.handleChange.bind(this)}>
+        <DropDownMenu style={{fontSize:'50px', height:'50px'}} className='distance-selector' value={this.state.value} onChange={this.handleDistanceChange.bind(this)}>
           <MenuItem value={1} primaryText='1 Mile'/>
           <MenuItem value={2} primaryText='5K'/>
           <MenuItem value={3} primaryText='10K'/>
@@ -26,8 +54,10 @@ export default class TimeInput extends React.Component {
           <MenuItem value={5} primaryText='Marathon'/>
         </DropDownMenu>
         <TextField
+          value={this.state.time}
           style={{fontSize:'50px', height:'60px'}}
           hintText='hh:mm:ss'
+          onChange={this.handleTimeChange.bind(this)}
         />
       </div>
     );

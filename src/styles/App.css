@@ -1,0 +1,10 @@
+/* Base Application Styles */
+body {
+  color: black;
+  background: white;
+}
+
+h1 {
+  margin: 0;
+  font-size: 5em;
+}

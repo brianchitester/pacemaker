@@ -21,11 +21,10 @@ var hmsToSecondsOnly = function(str) {
 }
 
 var secondsToHMS = function(totalSec) {
-  var hours = parseInt( totalSec / 3600 ) % 24;
   var minutes = parseInt( totalSec / 60 ) % 60;
   var seconds = totalSec % 60;
 
-  var result = (hours < 10 ? '0' + hours : hours) + ':' + (minutes < 10 ? '0' + minutes : minutes) + ':' + (seconds  < 10 ? '0' + seconds : seconds);
+  var result = (minutes < 10 ? '0' + minutes : minutes) + ':' + (seconds  < 10 ? '0' + seconds : seconds);
   return result;
 }
 
@@ -46,7 +45,10 @@ export default class TimeTable extends React.Component {
     var tableRows = [];
     let inputDistance = nextProps.distance;
     distances.forEach(function(distance) {
-      let time = hmsToSecondsOnly(nextProps.time) * (distance / inputDistance)^1.06;
+      let a = 13.49681 - 0.048865 * inputDistance + 2.438936 / ( inputDistance * 0.7905);
+      let b = 13.49681 - 0.048865 * distance + 2.438936 / (distance * 0.7905);
+      let time = (hmsToSecondsOnly(nextProps.time)/inputDistance) * (a/b) * distance;
+      time = Math.round(time/distance);
       time = secondsToHMS(time);
       tableRows.push(
         <TableRow>

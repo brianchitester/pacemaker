@@ -24,9 +24,9 @@ class AppComponent extends React.Component {
           title='pacemaker'
           iconClassNameRight='muidocs-icon-navigation-expand-more'
         />
-        <FontIcon className='material-icons' style={{fontSize:'300px'}}>&#xE566;</FontIcon>
-        <FontIcon className='material-icons' style={{fontSize:'300px'}}>&#xE566;</FontIcon>
-        <FontIcon className='material-icons' style={{fontSize:'300px'}}>&#xE566;</FontIcon>
+        <FontIcon className='material-icons' style={{fontSize:'200px'}}>&#xE566;</FontIcon>
+        <FontIcon className='material-icons' style={{fontSize:'200px'}}>&#xE566;</FontIcon>
+        <FontIcon className='material-icons' style={{fontSize:'200px'}}>&#xE566;</FontIcon>
         <h1>Run faster.</h1>
         <TimeInput/>
       </div>

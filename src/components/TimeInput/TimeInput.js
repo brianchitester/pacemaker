@@ -1,5 +1,3 @@
-require('./TimeInput.scss');
-
 import React from 'react';
 import DropDownMenu from 'material-ui/lib/DropDownMenu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
@@ -32,7 +30,7 @@ export default class TimeInput extends React.Component {
   }
 
   handleTimeChange(e){
-    let distanceIndex = document.querySelector('.distance-selector').value;
+    let distanceIndex = this.state.value;
     this.setState({
       time: e.target.value,
       distance: distanceMap[distanceIndex]
@@ -42,8 +40,8 @@ export default class TimeInput extends React.Component {
   render() {
     return (
       <div>
-        <div className='TimeInput'>
-          <DropDownMenu style={{fontSize:'50px', height:'50px'}} className='distance-selector' value={this.state.value} onChange={this.handleDistanceChange.bind(this)}>
+        <div className='time-input'>
+          <DropDownMenu style={{fontSize:'50px', height:'50px', background:'white'}} value={this.state.value} onChange={this.handleDistanceChange.bind(this)}>
             <MenuItem value={1} primaryText='1 Mile'/>
             <MenuItem value={2} primaryText='5K'/>
             <MenuItem value={3} primaryText='10K'/>
@@ -52,7 +50,6 @@ export default class TimeInput extends React.Component {
           </DropDownMenu>
           <TextField
             className='time-input'
-            value={this.state.time}
             style={{fontSize:'50px', height:'60px'}}
             hintText='hh:mm:ss'
             onChange={this.handleTimeChange.bind(this)}

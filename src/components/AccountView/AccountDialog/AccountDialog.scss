@@ -1,0 +1,14 @@
+.dialog-content{
+  display: flex;
+  flex-direction: column;
+  width: 20em;
+
+  .create-section{
+    margin-top: 1.5em;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+    color: grey;
+  }
+}

@@ -42,11 +42,11 @@ export default class TimeInput extends React.Component {
       <div>
         <div className='time-input'>
           <DropDownMenu style={{fontSize:'50px', height:'50px', background:'white'}} value={this.state.value} onChange={this.handleDistanceChange.bind(this)}>
-            <MenuItem value={1} primaryText='1 Mile'/>
-            <MenuItem value={2} primaryText='5K'/>
-            <MenuItem value={3} primaryText='10K'/>
-            <MenuItem value={4} primaryText='Half Marathon'/>
-            <MenuItem value={5} primaryText='Marathon'/>
+            <MenuItem value={1} style={{appearance: 'none'}} primaryText='1 Mile'/>
+            <MenuItem value={2} style={{appearance: 'none'}} primaryText='5K'/>
+            <MenuItem value={3} style={{appearance: 'none'}} primaryText='10K'/>
+            <MenuItem value={4} style={{appearance: 'none'}} primaryText='Half Marathon'/>
+            <MenuItem value={5} style={{appearance: 'none'}} primaryText='Marathon'/>
           </DropDownMenu>
           <TextField
             className='time-input'
